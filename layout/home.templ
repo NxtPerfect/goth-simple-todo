@@ -1,0 +1,23 @@
+package layout
+
+import (
+  "strconv"
+  "simple-todo/types"
+)
+
+templ Home(list []types.Task) {
+  @rawPage() {
+    <form hx-post="/task/add" hx-target="body">
+      <input type="text" name="title" placeholder="Title" minlength="4" required/>
+      <input type="text" name="description" placeholder="Description" minlength="4" required/>
+      <button type="submit">Add new task</button>
+    </form>
+    if len(list) == 0 {
+      <p>No tasks for today</p>
+    } else {
+      for _, task := range list {
+        @TaskComponent(task.Id, task.Title, task.Description, strconv.FormatBool(task.Finished))
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+package layout
+
+templ TaskEditForm(id string, title string, description string) {
+  <form hx-post="/task/edit" hx-target="closest li" hx-swap="outerHTML">
+    <input type="hidden" name="id" value={id} minlength="4"/>
+    <input type="text" name="title" value={title} placeholder="Title" minlength="4"/>
+    <input type="text" name="description" value={description} placeholder="description"/>
+    <button type="submit">Confirm</button>
+  </form>
+}

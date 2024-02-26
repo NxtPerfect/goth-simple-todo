@@ -1,0 +1,17 @@
+package layout
+
+import "strconv"
+
+templ TaskComponent(id int64, title string, description string, finished string) {
+  <li key={strconv.FormatInt(id, 10)}>
+    <p>{title} {description}
+      if finished == "true" {
+        <input type="checkbox" checked/>
+      } else {
+        <input type="checkbox"/>
+      }
+      <button type="button" hx-get={"/task/edit?id=" + strconv.FormatInt(id, 10) + "&title=" + title + "&description=" + description} hx-target="closest p" hx-swap="outerHTML">Edit</button>
+      <button type="button" hx-delete={"/task/remove?id=" + strconv.FormatInt(id, 10)} hx-target="closest li" hx-swap="outerHTML">Remove</button>
+    </p>
+  </li>
+}

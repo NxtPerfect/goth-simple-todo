@@ -1,0 +1,26 @@
+package layout
+
+templ rawPage() {
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <title>Simple golang htmx todo</title>
+    <meta charset="UTF-8"/>
+     <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  </head>
+
+  <body>
+    <nav>
+      <h1>Simple golang+htmx todo</h1>
+    </nav>
+    <main>
+      <ul>
+        {children...}
+      </ul>
+    </main>
+  </body>
+
+  </html>
+}
